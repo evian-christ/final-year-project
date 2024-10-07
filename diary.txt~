@@ -1,0 +1,244 @@
+28/SEP/22
+- created branch
+- wrote abstract draft
+
+- cloned branch to my pc
+- added plan.txt
+- edited plan.txt to include the abstract I've written past few days
+
+02/OCT/22
+- updated timeline of the project plan
+- website structure draft
+
+- completed timeline draft term 1
+
+- updated abstract so it includes more about my drive to make this website I'm
+  making
+- completed abstact draft
+
+- completed timeline draft term 2
+- updated abstract
+
+- completed risk assessment draft
+
+- completed Project Plan draft in the form of docx
+
+04/OCT/22
+- got feedback on plan draft
+- updated abstract according to the feedback
+
+- completed second draft of abstract
+- completed second draft of timeline
+- completed second draft of risk assessment
+
+06/OCT/22
+- final check
+- corrected grammars and spelling
+
+- submitted the project plan to moodle
+- i can see feedback from last year. I got a F from Dave and it says "The plan is not submitted, because the
+  student has taken a year off..."
+
+- decided to go with django, I love Python.
+- had a looked at django tutorials
+
+- added a static website for testing purpose
+
+08/OCT/22
+- installed wampstack (apache)
+
+- cgi setted up
+
+- learned cgi & python
+- now I have simple website running on Apache
+
+09/OCT/22
+- learned about XSS
+- learned about package manager
+
+- learned about html-sanitizer
+
+09~22/OCT/22
+- revised git ...
+- learned about gitlab
+- reverted and fixed repo
+
+- learned about structure of django
+- learned about how to read, write in django
+
+- learned about virtual environment
+
+- fixed issue where import is not working in the virtual environment created
+- fixed issue where views.py not being able to call main.html file from the
+  templates folder
+
+23/OCT/22
+- continue learning about django
+- created navigation bar
+
+- created match lobby in homepage
+- added meta data to the match (just for structure use for now)
+this is all frontend yet
+
+24/OCT/22
+- created match app
+- create Feed Class which will be the matches shown in the homepage
+
+- edited views to fetch feed_list from DB
+
+- edited main.html in templates to display matches fetched from DB
+
+- created accounts app
+- created login and signup.html templates for accounts app
+- basic bone structure of signup.html
+
+29/OCT/22
+- made basic frame of the right body of the homepage to display the profile of
+  the user and the list of the friends of the user
+
+- made the match add modal
+- the match add modal now pops up when the user click the add match button on
+  the navigation bar
+- the match add modal now closes when the user click the close button at the
+  right top corner of the modal
+
+09/NOV/22
+Came back from illness ..
+- started writing project report
+- project report title
+- project report table of contents
+
+14/NOV/22
+Came back from assignments piled up during my illness ...
+- started writing project report
+- thought about structure for Part 1 (Abstract + Project specification +
+  Introduction etc)
+- copied and paste the abstract from the project plan to start with
+- wrote a bit of project specification then wonder if this should be written
+  by me or am I supposed to use the original specification so sent an email to
+  the supervisor
+- came back to source code and I'm lost, I don't know what's happening
+- decided to go back to scratch and start without rest framework which I lack
+  understanding
+- managed to make it work without it (pure django) but scripts are not
+  working... tons of working incoming.
+
+16/NOV/22
+- created new project to practice django from beginning
+- created django app called polls
+- created view for polls
+- created urls.py for polls and called view
+- connected polls urls.py to the main urls.py
+
+19/NOV/22
+- finished django tutorial part 2 and 3
+
+21/NOV/22
+- finished django tutorial (only neccessary parts)
+
+22/NOV/22
+- created new project for actual project
+- created super user and set up admin page
+
+- created app for login
+- set urls for login and connect it to the main urls.py
+- created template for login page
+- created form error template
+
+- views.py for homepage
+- connected it to urls
+- created homepage template
+
+- forms.py for sign up form
+- created template for signup page
+- connect it to urls.py
+
+- created match app
+- match model with adequate attributes
+- MATCH APP CONFIG TO SETTINGS PY (NEVER FORGET OR OTHERWISE HELL FOR ANOTHER
+  HOUR)
+- NVER FORGET MIGRATION AS WELL
+- added match to admin page for easier management (and test)
+- created match create page (just scratch really)
+
+24/NOV/22
+- created form for match creation
+- widgets for datetime and description (textarea) (I used my own anyway, this
+  was useless)
+- seperated base.html into base.html which contains <head> only with style and
+  base(nav).html which also contains navigation bar. (this is because some
+  pages don't need nav bar)
+
+- created profile page and template
+- profile page take username in url instead of primary key. cool.
+- and ui/design improvement in all pages
+- my website now looks cool
+
+- next step is to expand match meta data
+- also learn how to expand builtin django user to add custom attributes
+- also learn about uploading and storing images (for profile pic) (no rush
+  this is for social media feature for term 2)
+
+- time to write report (least fav part)
+
+26/NOV/22
+- added Match to index view and it pass match list to index.html
+- index.html now display all active matches
+
+- ../account/admin is not working some reason, while all other user's profile
+  pages displays correctly. Changed the name of the superuser to avoid this
+bug
+
+- time to write report
+
+- completed project specification
+
+27/NOV/22
+- Introduction completed
+- 1.1 Motivation completed
+- 1.2 Aims of the project completed
+
+- Read Evaluating web development frameworks: Django, Ruby on Rails and CakePHP by Julia Plekhanova
+
+28/NOV/22
+- Read Full-stack web development using Django REST framework and React by Joel Vainikka
+(very interesting report about investigating already existing Finnish Esports League's web service which is created with Wordpress and creating a new service)
+
+- Read Designing an MVC Model for Rapid Web Application Development by Dragos-Paul Pop, Adam Altar
+
+- completed 1.3 comparing web development frameworks
+
+29/NOV/22
+- Chapter 2: Architecture start
+- 2.1 virtual environment and installations completed
+
+- 2.2 File structure completed
+
+- 2.3 Features completed
+
+- diary added to the report
+
+17/JAN/23
+- it's time to add friends feature
+
+- fixed the placements of items in profile page
+
+- added name to the profile page
+
+10/FEB/23
+- added friends model
+
+- add_friend view added to account/views.py
+- added url pattern for adding a friend
+
+- friend list now displayed on the profile page
+- add friend button displayed next to the name
+
+- in order to accept friend request, we need notification feature
+- so we pause with the friend feature here, and it's time to implement notification feature
+
+- did some research and found out I don't need push notification as this is a website, it is more suitable to use notification feature where it's only visible when user is in the web app
+
+- I'm gonna use Django Channels for web socket
+
+- time to learn how to use Django Channels

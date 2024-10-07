@@ -1,0 +1,28 @@
+{% include "base(nav).html" %}
+
+<div id="notification-list">
+    {% if notifications %} {% for notification in notifications %}
+    <div class="notification-card{% if not notification.read %} unread{% endif %}">
+        <div>{{ notification.message|safe }}</div>
+    </div>
+    {% endfor %} {% else %}
+    <h1 style="color:grey">No notification to check for now.</h1>
+    {% endif %}
+</div>
+
+<script>
+    notificationsSocket.onmessage = function(event) {
+        const notification = JSON.parse(event.data);
+        console.log('Received notification:', notification);
+        const notificationList = document.getElementById("notification-list");
+        const firstNotification = notificationList.firstChild;
+        const newNotification = document.createElement("div");
+        newNotification.innerHTML = notification.message;
+        newNotification.classList.add('notification-card');
+        if (firstNotification) {
+            notificationList.insertBefore(newNotification, firstNotification);
+        } else {
+            notificationList.appendChild(newNotification);
+        }
+    };
+</script>

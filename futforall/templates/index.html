@@ -1,0 +1,71 @@
+{% include "base.html" %}
+<!-- Navigation bar -->
+<nav class="navbar bg-light">
+    <div class="container">
+        <!-- Title -->
+        <a style="font-size:40px" class="navbar-brand" href="/">FutForAll</a>
+
+        <!-- Search bar -->
+        <input class="form-control" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+
+        <!-- Buttons -->
+        <div class="navbar-buttons">
+            <span class="material-symbols-outlined"><a class="nv-btns" href="/">home</a></span> {% if user.is_authenticated %}
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'match:create' %}">add_circle</a></span>
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'account:profile' user.get_username %}">person</a></span>
+            <span class="material-symbols-outlined notification-icon">
+                <a class="nv-btns" href="{% url 'notifc:index' %}">
+                    notifications
+                    <span class="badge" id="unread-notifications-count">{% if unread_notifications_count %}{{ unread_notifications_count }}{% endif %}</span>
+            </a>
+            </span>{% else %}
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'account:login' %}">add_circle</a></span>
+            <form action="{% url 'account:login' %}"><input class="login" type="submit" value="login" /></form> {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div>
+    {% block content %} {% endblock %}
+</div>
+
+<body>
+    <!-- Body -->
+    <div class="main-body">
+        <div class="left-body">
+            {% if match_list %} {% for match in match_list %}
+            <div class="match-box">
+                <div class="match-box-main">
+                    <h1 class="match-box-title">{{ match.title }}</h1>
+                    <span class="material-symbols-outlined"><a href="{% url 'match:detail' match.id %}" class="match-join-button">read_more</a></span>
+                </div>
+                <div class="match-box-meta">
+                    <span class="material-symbols-outlined match-box-meta-icon ">person</span><span class="match-box-meta-text ">{{ match.holder }}</span>
+                    <span class="material-symbols-outlined match-box-meta-icon ">schedule</span><span class="match-box-meta-text ">{{ match.match_date }}</span>
+                    <span class="material-symbols-outlined match-box-meta-icon ">location_on</span><span class="match-box-meta-text ">{{ match.location }}</span>
+                </div>
+                <div class="match-box-desc">
+                    {{ match.description }}
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <h1 style="color:grey">There's no match at the moment.</h1>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+
+<script>
+    notificationsSocket.onmessage = function(event) {
+        const notification = JSON.parse(event.data);
+        console.log('Received notification:', notification);
+        const unreadNotificationsCount = document.getElementById("unread-notifications-count");
+        let count = parseInt(unreadNotificationsCount.innerText);
+        if (isNaN(count)) {
+            count = 0
+        }
+        unreadNotificationsCount.innerText = count + 1;
+        unreadNotificationsCount.classList.remove('d-none');
+    };
+</script>

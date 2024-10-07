@@ -1,0 +1,14 @@
+{% include "base.html" %} {% block content %}
+<div class="login-box">
+    <a class="login-brand" href="/">FutForAll</a>
+    <form method="post" action="{% url 'account:login' %}" style="width:70%">
+        {% csrf_token %} {% include "form_errors.html" %}
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" value="{{ form.username.value|default_if_none:'' }}">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" value="{{ form.password.value|default_if_none:'' }}">
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <a href="{% url 'account:signup' %}">Sign up</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% include "base.html" %}
+<!-- Navigation bar -->
+<nav class="navbar bg-light">
+    <div class="container">
+        <!-- Title -->
+        <a style="font-size:40px" class="navbar-brand" href="/">FutForAll</a>
+
+        <!-- Search bar -->
+        <input class="form-control" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+
+        <!-- Buttons -->
+        <div class="navbar-buttons">
+            <span class="material-symbols-outlined"><a class="nv-btns" href="/">home</a></span> {% if user.is_authenticated %}
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'match:create' %}">add_circle</a></span>
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'account:profile' user.get_username %}">person</a></span>
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'notifc:index' %}">notifications</a></span>{% else %}
+            <span class="material-symbols-outlined"><a class="nv-btns" href="{% url 'account:login' %}">add_circle</a></span>
+            <form action="{% url 'account:login' %}"><input class="login" type="submit" value="login" /></form> {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div>
+    {% block content %} {% endblock %}
+</div>

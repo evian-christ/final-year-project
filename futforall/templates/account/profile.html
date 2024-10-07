@@ -1,0 +1,18 @@
+{% include "base(nav).html" %} {% block content %}
+<div class="profile-box">
+    <div class="profile-head">
+        <img src="../static/default-profile.jpg" class="profile-picture">
+        <div class="profile-top-area">
+            <b class="profile-name">{{ usr.first_name }}&nbsp;{{ usr.last_name }}</b>
+
+        </div>
+    </div>
+    <div class="profile-body">
+        <div class="profile-meta">
+            <div style="color: grey">@{{ usr.username }}</div>
+            {{ usr.email }} {% if user.is_authenticated and user.pk == usr.pk %}
+            <a href="{% url 'account:logout' %}">Log out</a> {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
